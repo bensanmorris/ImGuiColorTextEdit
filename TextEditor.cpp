@@ -62,10 +62,10 @@ void TextEditor::SetLanguageDefinition(const LanguageDefinition & aLanguageDef)
 {
 	mLanguageDefinition = aLanguageDef;
 	mRegexList.clear();
-
-	for (auto& r : mLanguageDefinition.mTokenRegexStrings)
-		mRegexList.push_back(std::make_pair(std::regex(r.first, std::regex_constants::optimize), r.second));
-
+/*
+    for (auto& r : mLanguageDefinition.mTokenRegexStrings)
+        mRegexList.push_back(std::make_pair(std::regex(r.first, std::regex_constants::optimize), r.second));
+*/
 	Colorize();
 }
 
@@ -883,7 +883,7 @@ void TextEditor::Render()
 
 	auto lineNo = (int)floor(scrollY / mCharAdvance.y);
 	auto globalLineMax = (int)mLines.size();
-	auto lineMax = std::max(0, std::min((int)mLines.size() - 1, lineNo + (int)floor((scrollY + contentSize.y) / mCharAdvance.y)));
+    auto lineMax = std::max(0, std::min((int)mLines.size() - 1, lineNo + (int)floor((scrollY + contentSize.y) / mCharAdvance.y)));
 
 	// Deduce mTextStart by evaluating mLines size (global lineMax) plus two spaces as text width
 	char buf[16];
